@@ -14,7 +14,7 @@ class JsonExporter:
 
     def export(self, results_by_task: Mapping[str, List[BenchmarkResult]]) -> str:
         self._output_dir.mkdir(parents=True, exist_ok=True)
-        out_path = self._output_dir / "benchmark-results.json"
+        out_path = self._output_dir / "benchmark-results-python.json"
 
         tasks = []
         for task_name, results in results_by_task.items():
@@ -41,6 +41,7 @@ class JsonExporter:
         payload = {
             "generatedAt": datetime.now(timezone.utc).isoformat(),
             "framework": "Python Concurrency Benchmark Framework",
+            "language": "python",
             "tasks": tasks,
         }
 

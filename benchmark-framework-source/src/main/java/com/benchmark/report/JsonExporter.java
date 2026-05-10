@@ -24,6 +24,7 @@ public final class JsonExporter {
         sb.append("{\n");
         sb.append("  \"generatedAt\": \"").append(Instant.now()).append("\",\n");
         sb.append("  \"framework\": \"Java Concurrency Benchmark Framework\",\n");
+        sb.append("  \"language\": \"java\",\n");
         sb.append("  \"tasks\": [\n");
 
         int ti = 0;
@@ -56,7 +57,7 @@ public final class JsonExporter {
         }
         sb.append("\n  ]\n}\n");
 
-        File out = new File(outputDir, "benchmark-results.json");
+        File out = new File(outputDir, "benchmark-results-java.json");
         try (Writer w = new FileWriter(out, StandardCharsets.UTF_8)) {
             w.write(sb.toString());
         }
